@@ -1,0 +1,20 @@
+﻿version: '3'
+networks:
+  catalogo:
+services:
+  database:
+    image: mysql:5.7.22
+    container_name: catalogo_database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: catalogodb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./.dbdata:/var/lib/mysql
+    networks:
+      - catalogo
