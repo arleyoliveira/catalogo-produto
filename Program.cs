@@ -1,7 +1,10 @@
 ﻿using Catalogo.Context;
+using Catalogo.Contracts;
+using Catalogo.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
 // Add services to the container.
 
