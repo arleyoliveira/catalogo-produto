@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Catalogo.Context;
 using Catalogo.Contracts;
 using Catalogo.Models;
@@ -16,7 +12,7 @@ namespace Catalogo.Repositories
 
         public Categoria? GetById(int id)
         {
-            return _context.Set<Categoria>().FirstOrDefault(p => p.CategoriaId == id);
+            return _context.Categorias?.FirstOrDefault(c => c.CategoriaId == id);
         }
     }
 }

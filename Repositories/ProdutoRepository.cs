@@ -1,8 +1,6 @@
-using System.Diagnostics;
 using Catalogo.Context;
 using Catalogo.Contracts;
 using Catalogo.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Catalogo.Repositories
 {
@@ -12,9 +10,6 @@ namespace Catalogo.Repositories
         {
         }
 
-        public Produto? GetById(int id)
-        {
-            return _context.Produtos.FirstOrDefault(p => p.ProdutoId == id);
-        }
+        public Produto? GetById(int id) => _context.Produtos?.FirstOrDefault(p => p.ProdutoId == id);
     }
 }

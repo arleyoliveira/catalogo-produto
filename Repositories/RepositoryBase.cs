@@ -1,5 +1,4 @@
 using Catalogo.Context;
-using Catalogo.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalogo.Repositories
