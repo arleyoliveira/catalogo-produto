@@ -8,17 +8,17 @@ namespace Catalogo.Controllers
     [Route("[controller]")]
     public class ProdutosController : ControllerBase
     {
-        private IProdutoRepository repository;
+        private IProdutoRepository _repository;
 
         public ProdutosController(IProdutoRepository repository)
         {
-            this.repository = repository;
+            _repository = repository;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Produto>> Get()
         {
-            var produtos = repository.GetAll();
+            var produtos = _repository.GetAll();
 
             if (produtos is null)
                 return NotFound();
@@ -29,7 +29,7 @@ namespace Catalogo.Controllers
         [HttpGet("{id:int}", Name = "ObterProduto")]
         public ActionResult<Produto> Get(int id)
         {
-            var produto = repository.GetById(id);
+            var produto = _repository.GetById(id);
 
             if (produto is null)
                 return NotFound("Produto não encontrado!");
@@ -43,7 +43,7 @@ namespace Catalogo.Controllers
             if (produto is null || id != produto.ProdutoId)
                 return BadRequest();
 
-            repository.Update(produto);
+            _repository.Update(produto);
 
             return Ok(produto);
         }
@@ -54,7 +54,7 @@ namespace Catalogo.Controllers
             if (produto is null)
                 return BadRequest("Dados produtos inválidos!");
 
-            repository.Save(produto);
+            _repository.Save(produto);
 
             return new CreatedAtRouteResult("ObterProduto", new { id = produto.ProdutoId }, produto);
         }
@@ -63,12 +63,12 @@ namespace Catalogo.Controllers
         public ActionResult Delete(int id)
         {
 
-            var produto = repository.GetById(id);
+            var produto = _repository.GetById(id);
 
             if (produto is null)
                 return NotFound("Produto não encontrado!");
 
-            repository.Delete(produto);
+            _repository.Delete(produto);
 
             return NoContent();
         }
