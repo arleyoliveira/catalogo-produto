@@ -7,5 +7,6 @@ namespace Catalogo.Contracts
          public List<Produto> GetAll();
          public Produto GetById(int id);
          public Produto Save(Produto produto);
+         public Produto Update(Produto produto);
     }
 }

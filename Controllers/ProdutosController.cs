@@ -37,6 +37,17 @@ namespace Catalogo.Controllers
             return produto;
         }
 
+        [HttpPut("{id:int}", Name = "AtualizarProduto")]
+        public ActionResult Put(int id, Produto produto)
+        {
+            if (produto is null || id != produto.ProdutoId)
+                return BadRequest();
+
+            repository.Update(produto);
+
+            return Ok(produto);
+        }
+
         [HttpPost]
         public ActionResult Post(Produto produto)
         {

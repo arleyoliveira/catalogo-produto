@@ -1,6 +1,7 @@
 using Catalogo.Context;
 using Catalogo.Contracts;
 using Catalogo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalogo.Repositories
 {
@@ -27,6 +28,14 @@ namespace Catalogo.Repositories
         public Produto Save(Produto produto)
         {
             _context.Produtos.Add(produto);
+            _context.SaveChanges();
+
+            return produto;
+        }
+
+        public Produto Update(Produto produto)
+        {
+            _context.Entry(produto).State = EntityState.Modified;
             _context.SaveChanges();
 
             return produto;
