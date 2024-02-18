@@ -14,7 +14,7 @@ namespace Catalogo.Repositories
 
         public Produto? GetById(int id)
         {
-            return _context.Set<Produto>().FirstOrDefault(p => p.ProdutoId == id);
+            return _context.Produtos.FirstOrDefault(p => p.ProdutoId == id);
         }
     }
 }

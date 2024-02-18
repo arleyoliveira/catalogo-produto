@@ -25,6 +25,6 @@ namespace Catalogo.Models
 		{
 			Produtos = new Collection<Produto>();
 		}
-	}
+    }
 }
 
