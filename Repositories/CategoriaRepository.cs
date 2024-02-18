@@ -14,9 +14,9 @@ namespace Catalogo.Repositories
         {
         }
 
-        public Categoria GetById(int id)
+        public Categoria? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Set<Categoria>().FirstOrDefault(p => p.CategoriaId == id);
         }
     }
 }
