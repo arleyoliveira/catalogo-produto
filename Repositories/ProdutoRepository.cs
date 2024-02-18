@@ -14,6 +14,11 @@ namespace Catalogo.Repositories
             _context = context;
         }
 
+        public void Delete(Produto produto)
+        {
+            _context.Produtos.Remove(produto);
+            SaveChanges(produto);
+        }
 
         public List<Produto> GetAll()
         {
@@ -28,7 +33,7 @@ namespace Catalogo.Repositories
         public Produto Save(Produto produto)
         {
             _context.Produtos.Add(produto);
-            _context.SaveChanges();
+            SaveChanges(produto);
 
             return produto;
         }
@@ -36,9 +41,13 @@ namespace Catalogo.Repositories
         public Produto Update(Produto produto)
         {
             _context.Entry(produto).State = EntityState.Modified;
-            _context.SaveChanges();
+            SaveChanges(produto);
 
             return produto;
+        }
+
+        private void SaveChanges(Produto produto) {
+            _context.SaveChanges();
         }
     }
 }

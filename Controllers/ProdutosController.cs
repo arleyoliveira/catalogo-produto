@@ -58,5 +58,19 @@ namespace Catalogo.Controllers
 
             return new CreatedAtRouteResult("ObterProduto", new { id = produto.ProdutoId }, produto);
         }
+
+        [HttpDelete("{id:int}")]
+        public ActionResult Delete(int id)
+        {
+
+            var produto = repository.GetById(id);
+
+            if (produto is null)
+                return NotFound("Produto não encontrado!");
+
+            repository.Delete(produto);
+
+            return NoContent();
+        }
     }
 }
