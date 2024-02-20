@@ -8,6 +8,6 @@ namespace Catalogo.Contracts
 {
     public interface ICategoriaRepository : IRepositoryBase<Categoria>
     {
-        
+        public IEnumerable<Categoria> GetAllWithProducts();
     }
 }

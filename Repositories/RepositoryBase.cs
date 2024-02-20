@@ -15,7 +15,7 @@ namespace Catalogo.Repositories
 
         public List<TEntity> GetAll()
         {
-            return _context.Set<TEntity>().ToList();
+            return _context.Set<TEntity>().AsNoTracking().ToList();
         }
 
         public TEntity Save(TEntity entity)

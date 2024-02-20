@@ -72,5 +72,10 @@ namespace Catalogo.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("produtos")]
+        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos() {
+            return Ok(_repository.GetAllWithProducts());
+        }
     }
 }
